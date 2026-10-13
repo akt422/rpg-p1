@@ -109,13 +109,13 @@ namespace Dialogue
 
         private void EndDialogue()
         {
+            GameStateManager.SetState(GameState.Gameplay);
+            dialoguePanel.SetActive(false);
+            dialogueText.text = "";
             if (!string.IsNullOrWhiteSpace(eventId))
             {
                 dialogueActionTriggered?.Invoke(eventId);
             }
-            GameStateManager.SetState(GameState.Gameplay);
-            dialoguePanel.SetActive(false);
-            dialogueText.text = "";
         }
     }
 }

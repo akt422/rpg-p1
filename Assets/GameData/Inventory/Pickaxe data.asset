@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673b0879c3cd4562a7e7c2ba979a227f, type: 3}
   m_Name: Pickaxe data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Pickzxe
+  itemName: Pickaxe
   description: Hits fast and inflicts cut damage
   itemHealth: 3
   itemType: 0

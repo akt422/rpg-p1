@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoorLockedDialogue
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   entries:
-  - dialogue: Door is locked.
+  - dialogue: Door is locked. You don't have the key.
     dialogueSpeaker: {fileID: 11400000, guid: 4994239d0b08441adabf25be76ec730d, type: 2}
   choices: []
   eventId: 

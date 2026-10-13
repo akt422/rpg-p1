@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c922ace2d044dc081ffadc894da8ef6, type: 3}
+  m_Name: Choices_house_dialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  entries:
+  - dialogue: Be welcome, is there something I can help you with?
+    dialogueSpeaker: {fileID: 11400000, guid: 29251fd805ecf47739a9a1a74a163772, type: 2}
+  choices:
+  - {fileID: 11400000, guid: 41ba88219781c420794b77495c6f2cbf, type: 2}
+  - {fileID: 11400000, guid: d12d0e3c2580240dea0d9b5c91f5ecd6, type: 2}
+  eventId: 

@@ -12,7 +12,7 @@ public class SceneLoaderRoom : MonoBehaviour
             // Scene currScene = SceneManager.GetActiveScene();
             SceneTransitionData.targetSpawnPoint = targetSpawnPoint;
             // Debug.Log(SceneTransitionData.targetSpawnPoint + " ---- " + targetSpawnPoint);
-            StaticLoadScene.Instance.LoadScene(targetScene);
+            SceneTransitionManager.Instance.LoadScene(targetScene);
         }
     }
 }

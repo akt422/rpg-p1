@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using Dialogue;
+using Interactions;
 using TMPro;
 using UnityEngine.SceneManagement;
 
