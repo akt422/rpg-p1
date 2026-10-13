@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// todo: Write fade-in for pause menu, also incorporate fading between menu tabs
+// todo: Write fade-out for pause menu, also incorporate fading between menu tabs
 public class PauseGame : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button selectedButton;
     [SerializeField] private CanvasGroup pauseCanvasGroup;
-    [SerializeField] private float fadeDuration = 0.2f;
+    [SerializeField] private float fadeDuration = 0.3f;
 
     void Start()
     {
