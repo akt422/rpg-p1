@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Light
+  - Support
+  - combat-floor
+  - projectile
+  - Underling
   layers:
   - Default
   - TransparentFX
