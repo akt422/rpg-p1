@@ -5,12 +5,11 @@ public class Dragon : MonoBehaviour
 {
     private ProjectileController projectileController;
     [SerializeField] private GameObject dragonMouth;
-    [SerializeField] private Transform hero;
+    [SerializeField] private GameObject hero;
     
     void Awake()
     {
         projectileController =  gameObject.GetComponent<ProjectileController>();
-        hero = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void Start()
     {

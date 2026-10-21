@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float speed_min = 5f;
-    [SerializeField] private float speed_max = 15f;
+    [SerializeField] private float speed_min = 8f;
+    [SerializeField] private float speed_max = 20f;
     [Header("Phase 1: Upward Launch")]
     [SerializeField] private float launchUpSpeed = 8f;
     [SerializeField] private float targetHeightOffset = 14f; // How high above spawn to climb
@@ -20,7 +21,15 @@ public class Projectile : MonoBehaviour
     
     private AudioSource audioSource;
     [SerializeField] private AudioClip boomClip;
-    public event Action hitAction;
+    [SerializeField] private AudioClip launchProjectileClip;
+    [SerializeField] private AudioClip floorProjectileClip;
+    [SerializeField] private AudioClip spitProjectileClip;
+    
+    private PlayerCombatObject playerObj;
+    private bool blockOnLaunch = false;
+    private bool blockBeforeStrike = false;
+    private bool canDestroyUnderling = false;
+    public event Action<GameObject, int> hitAction;
 
     void Awake()
     {
@@ -28,18 +37,20 @@ public class Projectile : MonoBehaviour
         audioSource = AudioManager.Instance.GetComponent<AudioSource>();
     }
     
-    public void Initialize(Transform target)
+    public void Initialize(GameObject target)
     {
+        playerObj = target.GetComponent<PlayerCombatObject>();
         StartCoroutine(LaunchAndTargetRoutine(target));
     }
     
-    private IEnumerator LaunchAndTargetRoutine(Transform target)
+    private IEnumerator LaunchAndTargetRoutine(GameObject target)
     {
         float startY = transform.position.y;
         float endY = startY + targetHeightOffset;
 
         // Generate a vector pointing predominantly upward with random horizontal tilt
         Vector2 randomUpDir = new Vector2(Random.Range(-horizontalSpread, horizontalSpread), 1f).normalized;
+        audioSource.PlayOneShot(spitProjectileClip);
         rb.AddForce(randomUpDir * launchUpSpeed, ForceMode2D.Impulse);
         
         // Wait until projectile climbs past target height OR starts falling
@@ -65,20 +76,58 @@ public class Projectile : MonoBehaviour
             Debug.LogWarning("Player not found");
             yield break;
         }
-        Vector2 directionToPlayer = (target.position - transform.position).normalized;
+        Vector2 directionToPlayer = (target.transform.position - transform.position).normalized;
         float spreadFactor = 0.15f; // this and below are to have some spread to avoid shooting at player perfectly always.
         Vector2 randomizedDirection = (directionToPlayer + (Random.insideUnitCircle * spreadFactor)).normalized;
+
+        audioSource.PlayOneShot(launchProjectileClip);
         
+        blockOnLaunch = playerObj.IsBlocking;
         rb.AddForce(randomizedDirection * randomSpeed, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("projectile")) return;
+        if (collision.gameObject.CompareTag("Support"))
         {
+            blockBeforeStrike = playerObj.IsBlocking;
+            if (blockOnLaunch && !blockBeforeStrike)
+            {
+                Vector2 incomingVelocity = rb.linearVelocity;
+
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+
+                Vector2 reflectedDirection = new Vector2(
+                    incomingVelocity.x,
+                    Mathf.Abs(incomingVelocity.y)
+                ).normalized;
+
+                rb.AddForce(
+                    reflectedDirection * boostSpeed,
+                    ForceMode2D.Impulse
+                );
+                canDestroyUnderling = true;
+                return;
+            }
+
+            if (blockBeforeStrike) return;
             audioSource.PlayOneShot(boomClip);
             Destroy(gameObject);
-            hitAction?.Invoke();
+            CombatSceneController.HitObject(collision.gameObject, 1);
+            return;
         }
+
+        if (collision.gameObject.CompareTag("Underling"))
+        {
+            if (canDestroyUnderling)
+            {
+                Destroy(collision.gameObject);
+                CombatSceneController.killUnderling();
+            }
+        }
+        audioSource.PlayOneShot(floorProjectileClip);
+        Destroy(gameObject);
     }
 }

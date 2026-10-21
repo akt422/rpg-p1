@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1895444913268632905}
   m_Layer: 0
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,3 +201,6 @@ MonoBehaviour:
   hoverDelayMax: 1.5
   boostSpeed: 18
   boomClip: {fileID: 8300000, guid: 7bb973cee877e44aa96afd3bb098368d, type: 3}
+  launchProjectileClip: {fileID: 8300000, guid: c5d48fc1aace04683bbfc5d2d0d25885, type: 3}
+  floorProjectileClip: {fileID: 8300000, guid: e39a4a6362b87429abce2f1d43ee56fc, type: 3}
+  spitProjectileClip: {fileID: 8300000, guid: 13a8bcc4b8bd349f9a6a1aefb9eca76d, type: 3}

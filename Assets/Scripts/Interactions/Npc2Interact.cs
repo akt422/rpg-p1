@@ -8,6 +8,7 @@ namespace Interactions
         [SerializeField] private DialogueData dialogueData;
         [SerializeField] private string eventId;
         private string interactText = "E - Talk";
+        [SerializeField] private Quest.QuestData questData;
     
         public bool CanInteract()
         {
@@ -17,6 +18,7 @@ namespace Interactions
         public void Interact()
         {
             DialogueManager.Instance.StartDialogue(dialogueData);
+            Quest.Quest.AddQuest(questData);
         }
     
         public string InteractText()
