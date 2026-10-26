@@ -4,5 +4,6 @@ public enum GameState
     Dialogue,
     Pause,
     Cutscene,
-    Combat
+    Combat,
+    Farming
 }

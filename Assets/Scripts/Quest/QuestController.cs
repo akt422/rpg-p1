@@ -19,18 +19,17 @@ namespace Quest
             Quest.OnQuestChanged -= RefreshQuests;
         }
 
-        public void CreateQuest(QuestData data, QuestState state)
+        public void CreateQuest(QuestData data, QuestStatus status)
         {
             GameObject quest = Instantiate(questPrefab, transform);
             QuestDataUI questUI = quest.GetComponent<QuestDataUI>();
-            questUI.SetUp(data, state);
-            Debug.Log("Quest set up with " + data.Title);
+            questUI.SetUp(data, status);
         }
 
         private void RefreshQuests()
         {
             ClearQuests();
-            foreach (KeyValuePair<QuestData, QuestState> quest in Quest.Quests)
+            foreach (KeyValuePair<QuestData, QuestStatus> quest in Quest.Quests)
             {
                 CreateQuest(quest.Key, quest.Value);
             }
