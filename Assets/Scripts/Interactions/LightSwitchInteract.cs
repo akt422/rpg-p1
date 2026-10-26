@@ -1,4 +1,6 @@
 using Interactions;
+using Quest;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,6 +10,9 @@ public class LightSwitchInteract : MonoBehaviour, IInteractable
     private string interactText = "E - Switch on/off";
     private AudioSource audioSource;
     [SerializeField] private AudioClip lightAudio;
+    private bool switchedOnOnce = false;
+    [SerializeField] private QuestData questData;
+    [SerializeField] private QuestProgress progress;
     
     void Awake()
     {
@@ -25,6 +30,7 @@ public class LightSwitchInteract : MonoBehaviour, IInteractable
     {
         light.enabled = !light.enabled;
         audioSource.PlayOneShot(lightAudio);
+        QuestEventBus.RaiseEvent("switch_on_light");
     }
 
     public string InteractText()

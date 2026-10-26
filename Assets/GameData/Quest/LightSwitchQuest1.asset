@@ -16,3 +16,7 @@ MonoBehaviour:
   title: Let there be light
   description: Interact with light object in your house to turn it on
   icon: {fileID: -1206363265260994012, guid: db453249bd3904a74aef2a7826aac757, type: 3}
+  progressions:
+  - {fileID: 11400000, guid: b8c54987cc4a946c7a400198acb839a4, type: 2}
+  - {fileID: 11400000, guid: 071c6681d1e11481caf1cd5e674aa4e3, type: 2}
+  - {fileID: 11400000, guid: 2b38f4de5696d4b5cab1dd46d6da1857, type: 2}

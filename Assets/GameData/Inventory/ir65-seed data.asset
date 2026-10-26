@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673b0879c3cd4562a7e7c2ba979a227f, type: 3}
+  m_Name: ir65-seed data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: IR-65 seed
+  description: Seed that will yield without fail but useless.
+  itemHealth: 0
+  itemType: 2
+  icon: {fileID: 21300000, guid: 5c33e313d84014af192ccafd7282e691, type: 3}
+  count: 1
+  actions:
+  - {fileID: 11400000, guid: b2aa11ad97aa14b1db68fe8a0685eba0, type: 2}
+  - {fileID: 11400000, guid: 82806c389dc374991917ccdd8887e33c, type: 2}
+  itemId: ir65_seed
