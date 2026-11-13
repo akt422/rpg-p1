@@ -12,11 +12,14 @@ namespace Interactions
         private bool isLocked = true;
         private string interactText = "E - Try to open";
         private string _interactText;
+        [SerializeField] private Transform interactPosition;
 
+        public Transform InteractPosition() => interactPosition;
         public void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
             bc = GetComponent<BoxCollider2D>();
+            if(interactPosition == null) interactPosition = transform;
         }
         public bool CanInteract()
         {
@@ -51,4 +54,5 @@ namespace Interactions
             return interactText;
         }
     }
+    
 }

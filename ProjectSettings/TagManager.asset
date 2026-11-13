@@ -17,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - 
+  - VisionBlocker
   - 
   - 
   - 
@@ -63,6 +63,12 @@ TagManager:
     locked: 0
   - name: Decor
     uniqueID: 567821751
+    locked: 0
+  - name: Interface
+    uniqueID: 3390512719
+    locked: 0
+  - name: VisionDarkness
+    uniqueID: 923938715
     locked: 0
   m_RenderingLayers:
   - Default

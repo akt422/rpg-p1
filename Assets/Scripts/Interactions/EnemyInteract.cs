@@ -13,11 +13,15 @@ public class EnemyInteract : MonoBehaviour, IInteractable
     [SerializeField] private Sprite activeSprite;
     private string eventId = "combat_boss_1";
     private SpriteRenderer sr;
+    [SerializeField] private Transform interactPosition;
+
+    public Transform InteractPosition() => interactPosition;
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = idleSprite;
+        if(interactPosition == null) interactPosition = transform;
     }
     
     private void OnEnable()

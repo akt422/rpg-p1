@@ -18,12 +18,16 @@ namespace Interactions
         private AudioSource audioSource;
         [SerializeField] private ItemData keyToUnlock;
         private string interactText = "E - Try to open";
+        [SerializeField] private Transform interactPosition;
+
+        public Transform InteractPosition() => interactPosition;
 
         private void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
             bc = GetComponent<BoxCollider2D>();
             audioSource = AudioManager.Instance.GetComponent<AudioSource>();
+            if(interactPosition == null) interactPosition = transform;
         }
         public bool CanInteract()
         {

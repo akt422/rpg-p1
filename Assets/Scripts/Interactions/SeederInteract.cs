@@ -7,6 +7,14 @@ public class SeederInteract : MonoBehaviour, IInteractable
     private string interactText = "Press E - Buy seed";
     [SerializeField] private DialogueData dialogueData;
     [SerializeField] private ItemData[] seeds;
+    [SerializeField] private Transform interactPosition;
+
+    public Transform InteractPosition() => interactPosition;
+
+    void Awake()
+    {
+        if(interactPosition == null) interactPosition = transform;
+    }
 
     void OnEnable()
     {

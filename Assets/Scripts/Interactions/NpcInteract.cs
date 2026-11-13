@@ -10,6 +10,14 @@ namespace Interactions
         [SerializeField] private ItemData priceItem;
         [SerializeField] private string eventId;
         private string interactText = "E - Talk";
+        [SerializeField] private Transform interactPosition;
+
+        public Transform InteractPosition() => interactPosition;
+
+        void Awake()
+        {
+            if(interactPosition == null) interactPosition = transform;
+        }
     
         public bool CanInteract()
         {

@@ -46,12 +46,12 @@ public class InteractionDetector : MonoBehaviour
     {
         if (GameStateManager.GetState() != GameState.Gameplay)
         {
-            interactIcon.SetActive(false);
+            // interactIcon.SetActive(false);
             interactImage.SetActive(false);
             return;
         }
         bool closestFound = FindClosest() != null;
-        interactIcon.SetActive(closestFound);
+        // interactIcon.SetActive(closestFound);
         interactImage.SetActive(closestFound);
     }
 
@@ -98,6 +98,10 @@ public class InteractionDetector : MonoBehaviour
             }
         }
         interactText.text = closest?.InteractText();
+        if (closest != null)
+        {
+            interactImage.transform.position = closest.InteractPosition().position;
+        }
         return closest;
     }
 

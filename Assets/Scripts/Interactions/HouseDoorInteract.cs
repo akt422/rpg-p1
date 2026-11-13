@@ -13,11 +13,15 @@ namespace Interactions
         private DialogueManager dialogueManager;
         [SerializeField] private AudioClip openDoorClip;
         [SerializeField] private DialogueData unlockDoorData;
+        [SerializeField] private Transform interactPosition;
+
+        public Transform InteractPosition() => interactPosition;
     
         private void Awake()
         {
             audioSource = AudioManager.Instance.GetComponent<AudioSource>();
             dialogueManager = DialogueManager.Instance;
+            if(interactPosition == null) interactPosition = transform;
         }
         public bool CanInteract()
         {

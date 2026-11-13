@@ -12,6 +12,14 @@ namespace Interactions
         private bool collected = false;
         [SerializeField] private AudioClip keyPickClip;
         private string interactText = "E - Pick up";
+        [SerializeField] private Transform interactPosition;
+
+        public Transform InteractPosition() => interactPosition;
+
+        void Awake()
+        {
+            if(interactPosition == null) interactPosition = transform;
+        }
 
         public bool CanInteract()
         {

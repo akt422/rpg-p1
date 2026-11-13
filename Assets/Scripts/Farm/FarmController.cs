@@ -31,7 +31,6 @@ public class FarmController : MonoBehaviour
     
     public void StartFarmMode(List<ItemEntry> item, FarmField farmField)
     {
-        GameStateManager.SetState(GameState.Farming);
         currentField = farmField;
         grid = farmField.GetSlots();
         prefab = farmField.GetHighlightPrefab();
@@ -98,6 +97,7 @@ public class FarmController : MonoBehaviour
         }
         if (proposedCells.All(cell => grid.ContainsKey(cell)))
         {
+            origin += direction;
             selectedCells = proposedCells;
             RefreshHighlights();
         }
@@ -122,8 +122,8 @@ public class FarmController : MonoBehaviour
 
     private void CreateCropShape(CropShape shape, int size)
     {
+        selectedCells.Clear();
         if (grid == null || grid.Count == 0) return;
-        Vector3Int anchor = grid.Keys.First();
         switch (shape)
         {
             case CropShape.Square:
@@ -152,6 +152,14 @@ public class FarmController : MonoBehaviour
 
     public void EndFarmMode()
     {
+        ClearGrid();
+        prefabs.Clear();
+        selectedCells.Clear();
+
+        currentField = null;
+        grid = null;
+        isActive = false;
+
         GameStateManager.SetState(GameState.Gameplay);
     }
     

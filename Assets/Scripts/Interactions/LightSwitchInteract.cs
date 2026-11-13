@@ -13,12 +13,16 @@ public class LightSwitchInteract : MonoBehaviour, IInteractable
     private bool switchedOnOnce = false;
     [SerializeField] private QuestData questData;
     [SerializeField] private QuestProgress progress;
+    [SerializeField] private Transform interactPosition;
+
+    public Transform InteractPosition() => interactPosition;
     
     void Awake()
     {
         audioSource = AudioManager.Instance.GetComponent<AudioSource>();
         light = gameObject.GetComponent<Light2D>();
         light.enabled = false;
+        if(interactPosition == null) interactPosition = transform;
     }
 
     public bool CanInteract()

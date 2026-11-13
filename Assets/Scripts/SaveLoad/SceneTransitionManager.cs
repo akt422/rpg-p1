@@ -31,7 +31,6 @@ public class SceneTransitionManager : MonoBehaviour
     {
         if (isLoading)
             return;
-        Debug.Log(sceneName + " is loading...");
         StartCoroutine(LoadAsync(sceneName));
         // StartCoroutine(SceneTransition(sceneName)); // Experimenting with Light objects dimming
     }

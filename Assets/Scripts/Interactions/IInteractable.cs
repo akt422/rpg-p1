@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Interactions
 {
     public interface IInteractable
@@ -5,5 +7,6 @@ namespace Interactions
         bool CanInteract();
         void Interact();
         string InteractText();
+        Transform InteractPosition();
     }
 }

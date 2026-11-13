@@ -11,6 +11,14 @@ namespace Interactions
         [SerializeField] private Quest.QuestData questData;
         [SerializeField] private QuestProgress initialProgress;
         [SerializeField] private QuestProgress finalProgress;
+        [SerializeField] private Transform interactPosition;
+
+        public Transform InteractPosition() => interactPosition;
+
+        void Awake()
+        {
+            if(interactPosition == null) interactPosition = transform;
+        }
     
         public bool CanInteract()
         {

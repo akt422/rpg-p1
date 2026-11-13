@@ -32,6 +32,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FARMING.unity
     guid: 86a56ea0b7b724b75b1e5234e4abe699
+  - enabled: 1
+    path: Assets/Scenes/start-room.unity
+    guid: 218e1eac215a549978ecaa7fe4972f6d
+  - enabled: 1
+    path: Assets/Scenes/start.unity
+    guid: 58554c1fd1d1a4c7d84ed67294abd0d0
+  - enabled: 1
+    path: Assets/Scenes/DungeonAlley.unity
+    guid: d39e22c86b3e54cf1a1b46fc930e7522
+  - enabled: 1
+    path: Assets/Scenes/Durbar.unity
+    guid: 6fabce4944f52416aa8d3e22feb14303
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9b42f41792d3a438ebc937627238bbd1, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

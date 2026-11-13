@@ -7,6 +7,14 @@ public class FarmInteract : MonoBehaviour, IInteractable
     private string interactText = "Press E - Farm mode";
     [SerializeField] private FarmField farmField;
     private FarmController farmController;
+    [SerializeField] private Transform interactPosition;
+
+    public Transform InteractPosition() => interactPosition;
+
+    void Awake()
+    {
+        if(interactPosition == null) interactPosition = transform;
+    }
     
     public bool CanInteract()
     {
